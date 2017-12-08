@@ -1,0 +1,25 @@
+.workzone {
+  display: grid;
+  grid-template-columns: 500px 200px;
+  grid-template-rows: 500px 100px;
+  grid-gap: 15px;
+
+  &__canvas {
+    background-color: coral;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    overflow: hidden;
+  }
+
+  &__colors-bar {
+    background-color: skyblue;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  &__controls-bar {
+    background-color: cornsilk;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+}
