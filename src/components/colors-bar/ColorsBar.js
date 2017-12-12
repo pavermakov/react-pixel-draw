@@ -33,9 +33,9 @@ const ColorsBar = () => (
       <span className="colors-bar__header">selected color:</span>
 
       <div className="colors-bar__row">
-        <span className="colors-bar__selected-color">
+        {/* <span className="colors-bar__selected-color"> */}
           <ColorsBarColor color={selectedColor} />
-        </span>
+        {/* </span> */}
       </div>
     </div>
   </div>
