@@ -11,7 +11,7 @@ const initialState = {
     'aquamarine',
     'white',
   ],
-  currentColor: 'white',
+  currentColor: 'crimson',
 };
 
 export default (state = initialState, action) => {

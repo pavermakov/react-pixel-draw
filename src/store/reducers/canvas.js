@@ -4,11 +4,21 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  let newState;
+  let newState = { ...state };
 
   switch(action.type) {
     case 'SET_NEW_GRID':
-      newState = { ...state, grid: action.grid };
+      newState = { ...newState, grid: action.grid };
+
+      return newState;
+    case 'SET_CELL_COLOR':
+      const { cell, color } = action;
+      const { row, col } = cell;
+
+      const modifiedRow = newState.grid[row];
+      modifiedRow[col] = color;
+
+      newState.grid = [ ...newState.grid.slice(0, row), modifiedRow, ...newState.grid.slice(row + 1) ];
 
       return newState;
     default:
