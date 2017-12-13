@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Canvas from 'components/canvas/Canvas';
 import { canvasActions } from 'store/actions';
+import Canvas from 'components/canvas/Canvas';
 
 class CanvasContainer extends Component {
   componentWillMount() {

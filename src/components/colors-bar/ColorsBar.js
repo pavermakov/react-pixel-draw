@@ -2,40 +2,29 @@ import React from 'react';
 import ColorsBarColor from 'components/colors-bar-color/ColorsBarColor';
 import './ColorsBar.less';
 
-const colors = [
-  'crimson',
-  'lightsalmon',
-  'gold',
-  'lawngreen',
-  'lightskyblue',
-  'royalblue',
-  'rebeccapurple',
-  'black',
-  'aquamarine',
-  'white',
-];
-
-const selectedColor = 'white';
-
-const pickerStyles = {
-  'gridTemplateRows': `repeat(${Math.ceil(colors.length / 2)}, 1fr)`,
+const renderColors = (availableColors, onColorSelect) => {
+  return availableColors.map((color, index) => {
+    return (
+      <ColorsBarColor
+        key={`color_${index}`}
+        color={color}
+        onClick={onColorSelect}
+      />
+    );
+  });
 };
 
-const renderColor = (color, index) => <ColorsBarColor key={`color_${index}`} color={color} />;
-
-const ColorsBar = () => (
+const ColorsBar = ({ availableColors, currentColor, onColorSelect }) => (
   <div className="colors-bar">
-    <div className="colors-bar__picker" style={pickerStyles}>
-      { colors.map(renderColor) }
+    <div className="colors-bar__picker">
+      { renderColors(availableColors, onColorSelect) }
     </div>
 
     <div className="colors-bar__selector">
       <span className="colors-bar__header">selected color:</span>
 
       <div className="colors-bar__row">
-        {/* <span className="colors-bar__selected-color"> */}
-          <ColorsBarColor color={selectedColor} />
-        {/* </span> */}
+        <ColorsBarColor color={currentColor} />
       </div>
     </div>
   </div>
