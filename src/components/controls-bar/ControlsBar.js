@@ -2,7 +2,7 @@ import React from 'react';
 import ControlBarButton from 'components/controls-bar-button/ControlsBarButton.js';
 import './ControlsBar.less';
 
-const ControlsBar = () => (
+const ControlsBar = ({ onReset }) => (
   <div className="controls-bar">
     <div className="controls-bar__row row flex-middle flex-center">
       <span className="controls-bar__button">
@@ -10,7 +10,7 @@ const ControlsBar = () => (
       </span>
 
       <span className="controls-bar__button">
-        <ControlBarButton styleType="btn-warning">reset</ControlBarButton>
+        <ControlBarButton styleType="btn-warning" onClick={onReset}>reset</ControlBarButton>
       </span>
     </div>
   </div>

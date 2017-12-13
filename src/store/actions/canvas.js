@@ -13,4 +13,11 @@ export default {
       cell,
     };
   },
+
+  resetGrid(defaultColor) {
+    return {
+      type: 'RESET_GRID',
+      defaultColor,
+    };
+  },
 };

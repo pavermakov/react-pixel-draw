@@ -21,7 +21,12 @@ export default (state = initialState, action) => {
       newState.grid = [ ...newState.grid.slice(0, row), modifiedRow, ...newState.grid.slice(row + 1) ];
 
       return newState;
+    case 'RESET_GRID':
+      const newGrid = newState.grid.map(row => row.map(col => action.defaultColor));
+      newState = { ...newState, grid: newGrid };
+
+      return newState;
     default:
-      return state;
+      return newState;
   }
 };
