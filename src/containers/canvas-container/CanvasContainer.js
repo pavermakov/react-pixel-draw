@@ -10,7 +10,10 @@ class CanvasContainer extends Component {
 
   render() {
     return (
-      <Canvas grid={this.props.grid} />
+      <Canvas
+        grid={this.props.grid}
+        onCellClick={this.handleCellClick}
+      />
     );
   }
 
@@ -29,12 +32,21 @@ class CanvasContainer extends Component {
 
     this.props.setNewGrid(newGrid);
   };
+
+  handleCellClick = (event) => {
+    const { currentColor, setCellColor } = this.props;
+    const { row, col } = event.target.dataset;
+    const cell = { row: +row, col: +col };
+
+    setCellColor(cell, currentColor);
+  };
 }
 
 const mapStateToProps = (state) => {
   return {
     size: state.canvas.size,
     grid: state.canvas.grid,
+    currentColor: state.colorsBar.currentColor,
   };
 };
 
@@ -42,6 +54,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setNewGrid(grid) {
       dispatch(canvasActions.setNewGrid(grid));
+    },
+
+    setCellColor(cell, color) {
+      dispatch(canvasActions.setCellColor(cell, color));
     },
   };
 };

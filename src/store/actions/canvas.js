@@ -5,4 +5,12 @@ export default {
       grid,
     };
   },
+
+  setCellColor(cell, currentColor) {
+    return {
+      type: 'SET_CELL_COLOR',
+      color: currentColor,
+      cell,
+    };
+  },
 };

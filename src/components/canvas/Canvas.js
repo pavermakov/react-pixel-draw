@@ -1,7 +1,7 @@
 import React from 'react';
 import './Canvas.less';
 
-const renderGrid = (grid) => {
+const renderGrid = (grid, onCellClick) => {
   return grid.map((row, rowIndex) => {
     return row.map((col, colIndex) => {
       const cellStyles = {
@@ -9,13 +9,20 @@ const renderGrid = (grid) => {
       };
 
       return (
-        <span className="canvas__cell" style={cellStyles} key={`cell_${rowIndex}_${colIndex}`}></span>
+        <span
+          className="canvas__cell"
+          style={cellStyles}
+          data-row={rowIndex}
+          data-col={colIndex}
+          key={`cell_${rowIndex}_${colIndex}`}
+          onClick={onCellClick}
+        ></span>
       );
     });
   });
 };
 
-const Canvas = ({ grid }) => {
+const Canvas = ({ grid, onCellClick }) => {
   const gridStyles = {
     'gridTemplateColumns': `repeat(${grid.length}, 1fr)`,
     'gridTemplateRows': `repeat(${grid.length}, 1fr)`,
@@ -23,7 +30,7 @@ const Canvas = ({ grid }) => {
 
   return (
     <div className="canvas" style={gridStyles}>
-      { renderGrid(grid) }
+      { renderGrid(grid, onCellClick) }
     </div>
   );
 };
