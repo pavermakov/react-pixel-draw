@@ -1,7 +1,7 @@
 import React from 'react';
 import CanvasContainer from 'containers/canvas-container/CanvasContainer';
 import ColorsBarContainer from 'containers/colors-bar-container/ColorsBarContainer';
-import ControlsBar from 'components/controls-bar/ControlsBar';
+import ControlsBarContainer from 'containers/controls-bar-container/ControlsBarContainer';
 import './Workzone.less';
 
 const Workzone = () => (
@@ -11,7 +11,7 @@ const Workzone = () => (
     </div>
 
     <div className="workzone__controls-bar">
-      <ControlsBar />
+      <ControlsBarContainer />
     </div>
 
     <div className="workzone__colors-bar border border-5">

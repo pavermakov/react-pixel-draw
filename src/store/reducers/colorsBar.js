@@ -12,17 +12,18 @@ const initialState = {
     'white',
   ],
   currentColor: 'crimson',
+  defaultColor: 'white',
 };
 
 export default (state = initialState, action) => {
-  let newState;
+  let newState = { ...state };
 
   switch(action.type) {
     case 'SET_CURRENT_COLOR':
-      newState = { ...state, currentColor: action.color };
+      newState = { ...newState, currentColor: action.color };
 
       return newState;
     default:
-      return state;
+      return newState;
   }
 };
