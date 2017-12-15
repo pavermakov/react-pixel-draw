@@ -13,8 +13,19 @@ class CanvasContainer extends Component {
       <Canvas
         grid={this.props.grid}
         onCellClick={this.handleCellClick}
+        onCellEnter={this.handleCellEnter}
       />
     );
+  }
+
+  componentDidMount() {
+    window.addEventListener('mousedown', this.props.setMouseState.bind(this, true));
+    window.addEventListener('mouseup', this.props.setMouseState.bind(this, false));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousedown', this.props.setMouseState.bind(this, true));
+    window.removeEventListener('mouseup', this.props.setMouseState.bind(this, false));
   }
 
   createGrid = () => {
@@ -40,13 +51,20 @@ class CanvasContainer extends Component {
 
     setCellColor(cell, currentColor);
   };
+
+  handleCellEnter = (event) => {
+    if (this.props.isMouseDown) {
+      this.handleCellClick(event);
+    }
+  };
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ canvas, colorsBar }) => {
   return {
-    size: state.canvas.size,
-    grid: state.canvas.grid,
-    currentColor: state.colorsBar.currentColor,
+    size: canvas.size,
+    grid: canvas.grid,
+    isMouseDown: canvas.isMouseDown,
+    currentColor: colorsBar.currentColor,
   };
 };
 
@@ -58,6 +76,10 @@ const mapDispatchToProps = (dispatch) => {
 
     setCellColor(cell, color) {
       dispatch(canvasActions.setCellColor(cell, color));
+    },
+
+    setMouseState(isMouseDown) {
+      dispatch(canvasActions.setMouseState(isMouseDown));
     },
   };
 };
