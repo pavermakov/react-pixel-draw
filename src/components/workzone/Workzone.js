@@ -6,16 +6,18 @@ import './Workzone.less';
 
 const Workzone = () => (
   <div className="workzone">
-    <div className="workzone__canvas border border-4">
-      <CanvasContainer />
-    </div>
+    <div className="workzone__container">
+      <div className="workzone__canvas border border-4">
+        <CanvasContainer />
+      </div>
 
-    <div className="workzone__controls-bar">
-      <ControlsBarContainer />
-    </div>
+      <div className="workzone__controls-bar">
+        <ControlsBarContainer />
+      </div>
 
-    <div className="workzone__colors-bar border border-5">
-      <ColorsBarContainer />
+      <div className="workzone__colors-bar border border-5">
+        <ColorsBarContainer />
+      </div>
     </div>
   </div>
 );

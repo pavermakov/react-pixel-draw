@@ -20,4 +20,11 @@ export default {
       defaultColor,
     };
   },
+
+  setMouseState(isMouseDown) {
+    return {
+      type: 'SET_MOUSE_STATE',
+      isMouseDown,
+    };
+  },
 };

@@ -9,10 +9,10 @@ const initialState = {
     'rebeccapurple',
     'black',
     'aquamarine',
-    'white',
+    'ghostwhite',
   ],
   currentColor: 'crimson',
-  defaultColor: 'white',
+  defaultColor: 'ghostwhite',
 };
 
 export default (state = initialState, action) => {

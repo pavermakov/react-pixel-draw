@@ -1,6 +1,7 @@
 const initialState = {
   size: 10,
   grid: [],
+  isMouseDown: false,
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +25,10 @@ export default (state = initialState, action) => {
     case 'RESET_GRID':
       const newGrid = newState.grid.map(row => row.map(col => action.defaultColor));
       newState = { ...newState, grid: newGrid };
+
+      return newState;
+    case 'SET_MOUSE_STATE':
+      newState = { ...newState, isMouseDown: action.isMouseDown };
 
       return newState;
     default:
