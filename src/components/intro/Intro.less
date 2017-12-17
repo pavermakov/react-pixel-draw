@@ -1,0 +1,22 @@
+.intro {
+  height: 100vh;
+
+  &__wrapper {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &__body {}
+  &__footer {}
+
+  &__body + &__footer {
+    margin-top: 25px;
+  }
+
+  &__link {
+    padding: 10px 15px;
+  }
+}
