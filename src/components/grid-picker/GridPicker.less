@@ -1,0 +1,27 @@
+.grid-picker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px;
+
+  &__item {
+    padding: 40px;
+    cursor: pointer;
+  }
+
+  &__item + &__item {
+    margin-left: 20px;
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__size {}
+
+  &__title,
+  &__size {
+    display: block;
+    text-align: center;
+  }
+}
