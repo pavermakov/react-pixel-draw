@@ -1,8 +1,9 @@
 export default {
-  setNewGrid(grid) {
+  createGrid(size, defaultColor) {
     return {
-      type: 'SET_NEW_GRID',
-      grid,
+      type: 'CREATE_GRID',
+      size,
+      defaultColor,
     };
   },
 

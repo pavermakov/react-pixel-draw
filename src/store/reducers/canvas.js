@@ -8,8 +8,19 @@ export default (state = initialState, action) => {
   let newState = { ...state };
 
   switch(action.type) {
-    case 'SET_NEW_GRID':
-      newState = { ...newState, grid: action.grid };
+    case 'CREATE_GRID':
+      const { size, defaultColor } = action;
+      const newGrid = [];
+
+      for (let row = 0; row < size; row += 1) {
+        newGrid.push([]);
+
+        for (let col = 0; col < size; col += 1) {
+          newGrid[row][col] = defaultColor
+        }
+      }
+
+      newState.grid = newGrid;
 
       return newState;
     case 'SET_CELL_COLOR':
@@ -23,8 +34,7 @@ export default (state = initialState, action) => {
 
       return newState;
     case 'RESET_GRID':
-      const newGrid = newState.grid.map(row => row.map(col => action.defaultColor));
-      newState = { ...newState, grid: newGrid };
+      newState = { ...newState, grid: newState.grid.map(row => row.map(col => action.defaultColor)) };
 
       return newState;
     case 'SET_MOUSE_STATE':

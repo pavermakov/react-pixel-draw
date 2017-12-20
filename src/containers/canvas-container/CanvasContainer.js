@@ -4,10 +4,6 @@ import { canvasActions } from 'store/actions';
 import Canvas from 'components/canvas/Canvas';
 
 class CanvasContainer extends Component {
-  componentWillMount() {
-    this.createGrid();
-  }
-
   render() {
     return (
       <Canvas
@@ -27,22 +23,6 @@ class CanvasContainer extends Component {
     window.removeEventListener('mousedown', this.props.setMouseState.bind(this, true));
     window.removeEventListener('mouseup', this.props.setMouseState.bind(this, false));
   }
-
-  createGrid = () => {
-    const { size } = this.props;
-    const newGrid = [];
-    const defaultColor = 'white';
-
-    for (let row = 0; row < size; row += 1) {
-      newGrid.push([]);
-
-      for (let col = 0; col < size; col += 1) {
-        newGrid[row][col] = defaultColor
-      }
-    }
-
-    this.props.setNewGrid(newGrid);
-  };
 
   handleCellClick = (event) => {
     const { currentColor, setCellColor } = this.props;
