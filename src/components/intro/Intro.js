@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import GridPicker from 'components/grid-picker/GridPicker';
+import IntroButton from 'components/intro-button/IntroButton';
 import './Intro.less';
 
-const Intro = ({ selectedGrid, gridOptions }) => (
+const Intro = ({ isGridSelected, gridOptions, onGridSelect, onProceed }) => (
   <div className="intro">
     <div className="intro__wrapper">
       <div className="intro__header">
@@ -12,12 +12,15 @@ const Intro = ({ selectedGrid, gridOptions }) => (
 
       <div className="intro__body">
         <div className="intro__grid-picker">
-          <GridPicker gridOptions={gridOptions} />
+          <GridPicker
+            gridOptions={gridOptions}
+            onGridSelect={onGridSelect}
+          />
         </div>
       </div>
 
       <div className="intro__footer">
-        <Link className="intro__link border" to="/draw">continue &rarr;</Link>
+        <IntroButton isGridSelected={isGridSelected} onClick={onProceed}>continue &rarr;</IntroButton>
       </div>
     </div>
   </div>
