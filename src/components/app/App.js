@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import Draw from 'views/draw/Draw';
 import Home from 'views/home/Home';
@@ -23,5 +24,13 @@ const App = ({ hasGrid }) => (
     </BrowserRouter>
   </div>
 );
+
+App.propTypes = {
+  hasGrid: PropTypes.bool,
+};
+
+App.defaultProps = {
+  hasGrid: false,
+};
 
 export default App;

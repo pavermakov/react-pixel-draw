@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { canvasActions } from 'store/actions';
 import Canvas from 'components/canvas/Canvas';
 
@@ -37,6 +38,21 @@ class CanvasContainer extends Component {
       this.handleCellClick(event);
     }
   };
+
+  static propTypes = {
+    grid: PropTypes.arrayOf(PropTypes.array).isRequired,
+    setCellColor: PropTypes.func.isRequired,
+    setMouseState: PropTypes.func.isRequired,
+    size: PropTypes.number,
+    isMouseDown: PropTypes.bool,
+    currentColor: PropTypes.string,
+  };
+
+  static defaultProps = {
+    size: 10,
+    isMouseDown: false,
+    currentColor: 'red',
+  };
 }
 
 const mapStateToProps = ({ canvas, colorsBar }) => {
@@ -50,10 +66,6 @@ const mapStateToProps = ({ canvas, colorsBar }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setNewGrid(grid) {
-      dispatch(canvasActions.setNewGrid(grid));
-    },
-
     setCellColor(cell, color) {
       dispatch(canvasActions.setCellColor(cell, color));
     },

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './GridPicker.less';
 
 const renderGridOptions = (gridOptions, onGridSelect) => {
@@ -24,5 +25,10 @@ const GridPicker = ({ gridOptions, onGridSelect }) => (
     {renderGridOptions(gridOptions, onGridSelect)}
   </div>
 );
+
+GridPicker.propTypes = {
+  gridOptions: PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.string, size: PropTypes.number })).isRequired,
+  onGridSelect: PropTypes.func.isRequired,
+};
 
 export default GridPicker;

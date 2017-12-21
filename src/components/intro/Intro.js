@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import GridPicker from 'components/grid-picker/GridPicker';
 import IntroButton from 'components/intro-button/IntroButton';
 import './Intro.less';
@@ -25,5 +26,16 @@ const Intro = ({ isGridSelected, gridOptions, onGridSelect, onProceed }) => (
     </div>
   </div>
 );
+
+Intro.propTypes = {
+  gridOptions: PropTypes.arrayOf(PropTypes.shape({ type: PropTypes.string, size: PropTypes.number })).isRequired,
+  onGridSelect: PropTypes.func.isRequired,
+  onProceed: PropTypes.func.isRequired,
+  isGridSelected: PropTypes.bool,
+};
+
+Intro.defaultProps = {
+  isGridSelected: false,
+};
 
 export default Intro;

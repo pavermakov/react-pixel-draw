@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './IntroButton.less';
 
 const IntroButton = ({ children, isGridSelected, onClick }) => (
@@ -9,5 +10,15 @@ const IntroButton = ({ children, isGridSelected, onClick }) => (
     { children }
   </button>
 );
+
+IntroButton.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isGridSelected: PropTypes.bool,
+};
+
+IntroButton.defaultProps = {
+  isGridSelected: false,
+};
 
 export default IntroButton;

@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import App from 'components/app/App';
+import { canvasActions } from 'store/actions';
+import utils from 'utils';
 
-const AppContainer = ({ hasGrid }) => (
-  <App hasGrid={hasGrid} />
-);
+class AppContainer extends Component {
+  componentWillMount() {
+    const grid = utils.getSavedResults();
+    console.log(grid)
+
+    if (grid && grid.length > 0) {
+      this.props.setNewGrid(grid);
+    }
+  }
+
+  render() {
+    return (
+      <App hasGrid={this.props.hasGrid} />
+    );
+  }
+
+  static propTypes = {
+    hasGrid: PropTypes.bool,
+    setNewGrid: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    hasGrid: false,
+  };
+}
 
 const mapStateToProps = ({ canvas }) => {
   return {
@@ -12,4 +37,12 @@ const mapStateToProps = ({ canvas }) => {
   };
 };
 
-export default connect(mapStateToProps)(AppContainer);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setNewGrid(grid) {
+      dispatch(canvasActions.setNewGrid(grid));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
