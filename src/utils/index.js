@@ -1,23 +1,31 @@
-import Cookie from 'js-cookie';
-
 export default {
   saveResults(data) {
-    Cookie.set('grid', JSON.stringify(data), { expires: 7 });
+    if (!window.localStorage) {
+      return;
+    }
+
+    localStorage.setItem('grid', JSON.stringify(data));
   },
 
   getSavedResults() {
+    if (!window.localStorage) {
+      return;
+    }
+
     let grid;
 
     try {
-      grid = JSON.parse(Cookie.get('grid'));
-    } catch (error) {
-      console.log(error)
-    }
+      grid = JSON.parse(localStorage.getItem('grid'));
+    } catch (error) {}
 
     return grid;
   },
 
   resetResults() {
-    Cookie.remove('grid');
+    if (!window.localStorage) {
+      return;
+    }
+    
+    localStorage.removeItem('grid');
   }
 };
