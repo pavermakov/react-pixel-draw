@@ -8,7 +8,6 @@ import utils from 'utils';
 class AppContainer extends Component {
   componentWillMount() {
     const grid = utils.getSavedResults();
-    console.log(grid)
 
     if (grid && grid.length > 0) {
       this.props.setNewGrid(grid);
