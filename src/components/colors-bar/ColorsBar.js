@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ColorsBarColor from 'components/colors-bar-color/ColorsBarColor';
 import './ColorsBar.less';
 
@@ -29,5 +30,15 @@ const ColorsBar = ({ availableColors, currentColor, onColorSelect }) => (
     </div>
   </div>
 );
+
+ColorsBar.propTypes = {
+  availableColors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onColorSelect: PropTypes.func.isRequired,
+  currentColor: PropTypes.string,
+};
+
+ColorsBar.defaultProps = {
+  currentColor: 'red',
+};
 
 export default ColorsBar;

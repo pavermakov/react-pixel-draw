@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Canvas.less';
 
 const renderGrid = (grid, onCellClick, onCellEnter) => {
@@ -34,6 +35,12 @@ const Canvas = ({ grid, onCellClick, onCellEnter }) => {
       { renderGrid(grid, onCellClick, onCellEnter) }
     </div>
   );
+};
+
+Canvas.propTypes = {
+  grid: PropTypes.arrayOf(PropTypes.array).isRequired,
+  onCellClick: PropTypes.func.isRequired,
+  onCellEnter: PropTypes.func.isRequired,
 };
 
 export default Canvas;

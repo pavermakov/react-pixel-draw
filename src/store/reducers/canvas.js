@@ -23,6 +23,10 @@ export default (state = initialState, action) => {
       newState.grid = newGrid;
 
       return newState;
+    case 'SET_NEW_GRID':
+      newState = { ...newState, grid: action.grid };
+
+      return newState;
     case 'SET_CELL_COLOR':
       const { cell, color } = action;
       const { row, col } = cell;
